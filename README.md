@@ -18,7 +18,7 @@ The following attributes are required:
 The following attributes are optional:
 - `password:string` - A hashed password to use for the user account. If a password isn't provided then the user account is disabled.
 - `groups:list` - A list of secondary groups the user will be added to.
-- `comment:string` - The description (aka GECOS) of the user account.
+- `description:string` - The description (aka GECOS) of the user account.
 - `uid:integer` - The numeric user id for the user.
 - `shell:string` - The user's shell. This defaults to /bin/bash. The default is configurable using the `users_shell` variable.
 - `home:string` - The path to the user's home directory. This defaults to /home/{`username`}.
