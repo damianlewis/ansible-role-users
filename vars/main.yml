@@ -1,0 +1,6 @@
+---
+# Default shell for users
+users_shell: /bin/bash
+
+# Authorized keys file, relative to the users home directory
+users_authorized_key_file: .ssh/authorized_keys

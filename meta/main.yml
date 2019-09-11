@@ -1,0 +1,21 @@
+galaxy_info:
+  role_name: users
+  author: Damian Lewis
+  description: User creation and management
+  license: MIT
+
+  min_ansible_version: 2.5
+
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+
+  galaxy_tags:
+  - system
+  - user
+
+dependencies: []
