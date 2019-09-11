@@ -12,3 +12,11 @@
     create_home: "{{ item.create_home_directory | default(omit) }}"
     update_password: "{{ item.update_password | default(true) | ternary('always', 'on_create') }}"
   loop: "{{ users_to_create }}"
+
+- name: Remove users
+  user:
+    name: "{{ item.username }}"
+    state: absent
+    remove: "{{ item.remove | default(omit) }}"
+    force: "{{ item.force | default(omit) }}"
+  loop: "{{ users_to_remove }}"

@@ -1,3 +1,6 @@
 ---
 # Lists of users to create
 users_to_create: []
+
+# Lists of users to remove
+users_to_remove: []
