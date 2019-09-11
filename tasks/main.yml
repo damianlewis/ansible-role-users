@@ -4,7 +4,7 @@
     name: "{{ item.username }}"
     password: "{{ item.password | default('!') }}"
     groups: "{{ item.groups | default(omit) }}"
-    comment: "{{ item.gecos | default(omit) }}"
+    comment: "{{ item.description | default(omit) }}"
     uid: "{{ item.uid | default(omit) }}"
     shell: "{{ item.shell | default(users_shell) }}"
     home: "{{ item.home | default('/home/' + item.username) }}"
