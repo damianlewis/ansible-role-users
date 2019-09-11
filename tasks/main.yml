@@ -20,3 +20,13 @@
     remove: "{{ item.remove | default(omit) }}"
     force: "{{ item.force | default(omit) }}"
   loop: "{{ users_to_remove }}"
+
+- name: Add SSH authorized keys for users
+  authorized_key:
+    user: "{{ item.0.username }}"
+    key: "{{ lookup('file', item.1) }}"
+    path: "{{ item.0.home | default('/home/' + item.0.username) }}/{{ users_authorized_key_file }}"
+  when: >
+    item.0.create_home_directory is undefined or
+    item.0.create_home_directory == true
+  loop: "{{ users_to_create | subelements('ssh_keys', skip_missing=True) }}"
