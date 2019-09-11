@@ -1,0 +1,14 @@
+---
+- name: Create users
+  user:
+    name: "{{ item.username }}"
+    password: "{{ item.password | default('!') }}"
+    groups: "{{ item.groups | default(omit) }}"
+    comment: "{{ item.gecos | default(omit) }}"
+    uid: "{{ item.uid | default(omit) }}"
+    shell: "{{ item.shell | default(users_shell) }}"
+    home: "{{ item.home | default('/home/' + item.username) }}"
+    append: "{{ item.append | default(omit) }}"
+    create_home: "{{ item.create_home_directory | default(omit) }}"
+    update_password: "{{ item.update_password | default(true) | ternary('always', 'on_create') }}"
+  loop: "{{ users_to_create }}"
