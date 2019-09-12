@@ -4,3 +4,6 @@ users_to_create: []
 
 # Lists of users to remove
 users_to_remove: []
+
+# Default settings
+users_default_shell: /bin/bash
