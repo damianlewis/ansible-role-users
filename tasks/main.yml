@@ -28,7 +28,7 @@
     path: "{{ item.0.home_directory | default('/home/' + item.0.username) }}/{{ users_authorized_key_file }}"
   when: >
     item.0.create_home_directory is undefined or
-    item.0.create_home_directory == true
+    item.0.create_home_directory | bool
   loop: "{{ users_to_create | subelements('ssh_keys', skip_missing=True) }}"
 
 - name: Customise user profile
@@ -40,6 +40,6 @@
     group: "{{ item.username }}"
     mode: 0644
   when: >
-    (item.create_home_directory is undefined or item.create_home_directory == true) and
+    (item.create_home_directory is undefined or item.create_home_directory | bool) and
     item.profile is defined
   loop: "{{ users_to_create }}"
