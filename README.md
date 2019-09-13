@@ -34,6 +34,8 @@ The following attributes are optional:
 - `ssh_keys:list` - A list of file paths to SSH public keys that will be added the authorized_keys file for the user account.
 - `profile:string` - A string block added to the user's profile file for setting custom shell profiles.
 
+Notes:
+- To generate a hashed password see [How do I generate encrypted passwords for the user module?](https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-generate-encrypted-passwords-for-the-user-module).
 ```yaml
 users_to_remove: []
 ```
