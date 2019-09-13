@@ -34,7 +34,7 @@
 - name: Customise user profile
   blockinfile:
     block: "{{ item.profile }}"
-    path: "{{ item.home_directory | default('/home/' + item.username) }}/.profile"
+    path: "{{ item.home_directory | default('/home/' + item.username) }}/{{ users_profile_file }}"
     create: yes
     owner: "{{ item.username }}"
     group: "{{ item.username }}"
