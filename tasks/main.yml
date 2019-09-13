@@ -6,19 +6,19 @@
     groups: "{{ item.groups | default(omit) }}"
     comment: "{{ item.description | default(omit) }}"
     uid: "{{ item.uid | default(omit) }}"
-    shell: "{{ item.shell | default(users_default_shell) }}"
+    shell: "{{ item.shell | default(users_shell) }}"
     home: "{{ item.home | default('/home/' + item.username) }}"
-    append: "{{ item.append | default(omit) }}"
-    create_home: "{{ item.create_home_directory | default(omit) }}"
-    update_password: "{{ item.update_password | default(true) | ternary('always', 'on_create') }}"
+    append: "{{ item.append | default(users_append_to_groups) }}"
+    create_home: "{{ item.create_home_directory | default(users_create_home_directory) }}"
+    update_password: "{{ item.update_password | default(users_update_password) | ternary('always', 'on_create') }}"
   loop: "{{ users_to_create }}"
 
 - name: Remove users
   user:
     name: "{{ item.username }}"
     state: absent
-    remove: "{{ item.remove | default(omit) }}"
-    force: "{{ item.force | default(omit) }}"
+    remove: "{{ item.remove | default(users_remove_user_directories) }}"
+    force: "{{ item.force | default(users_force_remove) }}"
   loop: "{{ users_to_remove }}"
 
 - name: Add SSH authorized keys for users
