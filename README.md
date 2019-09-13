@@ -31,11 +31,12 @@ The following attributes are optional:
 - `update_password:boolean` - Defaults to `users_update_password` if omitted (see below).
   - `true` - If the `password` differs from the current user's password then the password will be updated. 
   - `false` - The `password` isn't updated. It is only set for newly created users.
-- `ssh_keys:list` - A list of file paths to SSH public keys that will be added the authorized_keys file for the user account.
+- `ssh_keys:list` - A list of file paths to SSH public keys that will be added the authorized_keys file for the user account. Use the Ed25519 algorithm to geneate `ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519`
 - `profile:string` - A string block added to the user's profile file for setting custom shell profiles.
 
 Notes:
 - To generate a hashed password see [How do I generate encrypted passwords for the user module?](https://docs.ansible.com/ansible/latest/reference_appendices/faq.html#how-do-i-generate-encrypted-passwords-for-the-user-module).
+- To generate new SSH keys, use the Ed25519 algorithm `ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519`. See [Upgrade Your SSH Key to Ed25519](https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54) for more details about using Ed25519.
 ```yaml
 users_to_remove: []
 ```
