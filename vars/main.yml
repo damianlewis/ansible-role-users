@@ -4,3 +4,6 @@ users_authorized_key_file: .ssh/authorized_keys
 
 # User profile file
 users_profile_file: .profile
+
+# Sudoers directory path 
+users_sudoers_directory_path: /etc/sudoers.d
