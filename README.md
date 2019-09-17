@@ -62,8 +62,8 @@ The following attributes are required:
 - `username:string` - Name of the user to add to sudoers.
 
 The following attributes are optional:
-- `hosts:string` - The hosts that the rules should be applied to. If `hosts` isn't provided then rules are applied to `ALL` hosts.
-- `as:string` - The users and groups that the specified user can run commands as. If `as` isn't provided then the specified user can run commands as all users and all groups `ALL:ALL`.
+- `hosts:string` - The hosts that the rules should be applied to. If `hosts` isn't provided then the rules are applied to `ALL` hosts.
+- `as:string` - The users and groups, defined as `user:group`, that the specified user can run commands as. If `as` isn't provided then the specified user can run commands as `ALL` users.
 - `passwordless:boolean` - Defaults to false if omitted.
   - `true` - Allows the specified user to run all sudo commands without a password.
   - `false` - A password is required when running sudo commands.
@@ -99,7 +99,7 @@ None.
     users_sudoers:
     - username: admin
     - username: deployer
-      as: ALL
+      as: ALL:ALL
       passwordless: yes
 
   tasks:

@@ -1,1 +1,1 @@
-{{ item.username }} {{ item.hosts | default('ALL') }}=({{ item.as | default('ALL:ALL') }}){{ " NOPASSWD:" if (item.passwordless | default(false)) else "" }} ALL
+{{ item.username }} {{ item.hosts | default('ALL') }}=({{ item.as | default('ALL') }}){{ " NOPASSWD:" if (item.passwordless | default(false)) else "" }} ALL
