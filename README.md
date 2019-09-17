@@ -54,6 +54,21 @@ The following attributes are optional:
   - `false` - The user isn't forcibly removed. 
 
 ```yaml
+users_sudoers: []
+```
+A list of users to add to sudoers.
+
+The following attributes are required:
+- `username:string` - Name of the user to add to sudoers.
+
+The following attributes are optional:
+- `hosts:string` - The hosts that the rules should be applied to. If `hosts` isn't provided then the rules are applied to `ALL` hosts.
+- `as:string` - The users and groups, defined as `user:group`, that the specified user can run commands as. If `as` isn't provided then the specified user can run commands as `ALL` users.
+- `passwordless:boolean` - Defaults to false if omitted.
+  - `true` - Allows the specified user to run all sudo commands without a password.
+  - `false` - A password is required when running sudo commands.
+
+```yaml
 users_shell: /bin/bash
 users_append_to_groups: no
 users_create_home_directory: yes
@@ -81,6 +96,11 @@ None.
     users_to_create:
     - username: admin
     - username: deployer
+    users_sudoers:
+    - username: admin
+    - username: deployer
+      as: ALL:ALL
+      passwordless: yes
 
   tasks:
   - import_role:
