@@ -1,9 +1,12 @@
 ---
-# Lists of users to create
+# List of users to create
 users_to_create: []
 
-# Lists of users to remove
+# List of users to remove
 users_to_remove: []
+
+# List of users to add to sudoers
+users_sudoers: []
 
 # Default settings
 users_shell: /bin/bash

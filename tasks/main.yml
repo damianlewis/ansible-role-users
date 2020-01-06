@@ -43,3 +43,13 @@
     (item.create_home_directory is undefined or item.create_home_directory | bool) and
     item.profile is defined
   loop: "{{ users_to_create }}"
+
+- name: Add users to sudoers
+  template:
+    src: sudoers-user.j2
+    dest: "{{ users_sudoers_directory_path }}/99-{{ item.username }}"
+    owner: root
+    group: root
+    mode: 0440
+    validate: visudo -cf %s
+  loop: "{{ users_sudoers }}"
